@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{0ea08d59-4abe-456a-ac85-64c68eea8876}</ProjectGuid>
+    <RootNamespace>Lightshot</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir).Runtime/$(Configuration)/</OutDir>
+    <IntDir>$(SolutionDir).Build/$(Configuration)/</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir).Runtime/$(Configuration)/</OutDir>
+    <IntDir>$(SolutionDir).Build/$(Configuration)/</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)external/glad/include;$(SolutionDir)external/glfw/include;$(SolutionDir)external/glm/include;$(SolutionDir)external/egl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeaderOutputFile>$(SolutionDir).Build/$(Configuration)/$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(SolutionDir).Build/$(Configuration)/</AssemblerListingLocation>
+      <ModuleOutputFile>$(SolutionDir).Build/$(Configuration)/</ModuleOutputFile>
+      <ModuleDependenciesFile>$(SolutionDir).Build/$(Configuration)/</ModuleDependenciesFile>
+      <ObjectFileName>$(SolutionDir).Build/$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir).Build/$(Configuration)/vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(SolutionDir).Build/$(Configuration)/</XMLDocumentationFileName>
+      <BrowseInformationFile>$(SolutionDir).Build/$(Configuration)/</BrowseInformationFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)external/glad/lib;$(SolutionDir)external/glfw/lib;$(SolutionDir)external/glm/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glad.lib;glfw3dll.lib;glm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(SolutionDir).Runtime/$(Configuration)/$(TargetName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase>$(SolutionDir).Build/$(Configuration)/$(TargetName).pgd</ProfileGuidedDatabase>
+      <LinkTimeCodeGenerationObjectFile>$(SolutionDir).Build/$(Configuration)/$(TargetName).iobj</LinkTimeCodeGenerationObjectFile>
+      <OutputFile>$(SolutionDir).Runtime/$(Configuration)/$(TargetName)$(TargetExt)</OutputFile>
+      <IncrementalLinkDatabaseFile>$(SolutionDir).Build/$(Configuration)/$(TargetName).ilk</IncrementalLinkDatabaseFile>
+      <ManifestFile>$(SolutionDir).Build/$(Configuration)/$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+    </Link>
+    <BuildLog>
+      <Path>$(SolutionDir).Build/$(Configuration)/$(MSBuildProjectName).log</Path>
+    </BuildLog>
+    <PostBuildEvent>
+      <Command>xcopy "$(SolutionDir)external/glfw/bin\*" "$(SolutionDir).Runtime/$(Configuration)" /E /Y /Q</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)external/glad/include;$(SolutionDir)external/glfw/include;$(SolutionDir)external/glm/include;$(SolutionDir)external/egl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <PrecompiledHeaderOutputFile>$(SolutionDir).Build/$(Configuration)/$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(SolutionDir).Build/$(Configuration)/</AssemblerListingLocation>
+      <ModuleOutputFile>$(SolutionDir).Build/$(Configuration)/</ModuleOutputFile>
+      <ModuleDependenciesFile>$(SolutionDir).Build/$(Configuration)/</ModuleDependenciesFile>
+      <ObjectFileName>$(SolutionDir).Build/$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir).Build/$(Configuration)/vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(SolutionDir).Build/$(Configuration)/</XMLDocumentationFileName>
+      <BrowseInformationFile>$(SolutionDir).Build/$(Configuration)/</BrowseInformationFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)external/glad/lib;$(SolutionDir)external/glfw/lib;$(SolutionDir)external/glm/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glad.lib;glfw3dll.lib;glm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProfileGuidedDatabase>$(SolutionDir).Build/$(Configuration)/$(TargetName).pgd</ProfileGuidedDatabase>
+      <LinkTimeCodeGenerationObjectFile>$(SolutionDir).Build/$(Configuration)/$(TargetName).iobj</LinkTimeCodeGenerationObjectFile>
+      <OutputFile>$(SolutionDir).Runtime/$(Configuration)/$(TargetName)$(TargetExt)</OutputFile>
+      <IncrementalLinkDatabaseFile>$(SolutionDir).Build/$(Configuration)/$(TargetName).ilk</IncrementalLinkDatabaseFile>
+      <ManifestFile>$(SolutionDir).Build/$(Configuration)/$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+    </Link>
+    <BuildLog>
+      <Path>$(SolutionDir).Build/$(Configuration)/$(MSBuildProjectName).log</Path>
+    </BuildLog>
+    <PostBuildEvent>
+      <Command>xcopy "$(SolutionDir)external/glfw/bin\*" "$(SolutionDir).Runtime/$(Configuration)" /E /Y /Q</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
