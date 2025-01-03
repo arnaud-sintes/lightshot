@@ -249,7 +249,7 @@ int main( int _argc, char * _argv[] )
         resolution = defaultResolution;
     }
     
-    std::cout << "press 'space' key to toggle between linear/nearest texture filter" << std::endl << std::endl;
+    std::cout << "press 'space' key to toggle between linear/nearest texture filter" << std::endl;
     std::cout << "press 'esc' key to exit" << std::endl << std::endl;
 
     const Scene scene{
